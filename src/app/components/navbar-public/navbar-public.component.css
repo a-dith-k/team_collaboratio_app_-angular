@@ -1,0 +1,17 @@
+li{
+  list-style: none;
+  margin-right: 2rem;
+}
+ul{
+  align-items:center;
+}
+
+.nav-items{
+  display: flex;
+}
+:host ::ng-deep nav .p-button-{
+  background:black ;
+  border: black;
+}
+
+

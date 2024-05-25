@@ -1,0 +1,33 @@
+<div>
+  <div class="flex justify-content-center">
+
+    <h2 class="mr-2 poppins-medium">{{localDay}}</h2>
+    <h2 class="mr-2 poppins-medium">{{localDate}}</h2>
+    <h2 class="mr-2 poppins-medium">{{localMonth}}</h2>
+  </div>
+  <div class="flex justify-content-center">
+    <h1 class="poppins-medium text-5xl">Good {{greeting}} {{$appUser | async}}</h1>
+  </div>
+</div>
+
+<div class="mx-4">
+  <div class="border-2 border-round border-400">
+    <h2 class="poppins-medium ml-7">My Tasks</h2>
+    <div class="card poppins-medium ">
+      <p-tabMenu [activeItem]="activeItem" (activeItemChange)="switchTab($event)" [model]="items"></p-tabMenu>
+      <ul class="list-none">
+        <li class=" flex" *ngFor="let task of tasks">
+          <p-checkbox
+            (onChange)="taskCompleted(task.id)"
+            class="mr-1"
+            [value]="task.id"
+            [binary]="true"
+            inputId="binary" />
+          {{ task.name}}
+          <span class="ml-auto mr-3"><span class="mx-1  border-round-2xl px-1 bg-red-300">{{task.projectName}}</span>
+            {{task.deadline}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

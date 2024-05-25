@@ -1,0 +1,29 @@
+.separator {
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+.separator::before,
+.separator::after {
+	content: '';
+	flex: 1;
+	border-bottom: 1px solid #000;
+}
+
+.separator:not(:empty)::before {
+	margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+	margin-left: .25em;
+}
+
+
+ :host ::ng-deep  .p-button {
+ 	padding: 0.75rem 7rem;
+ }
+
+  :host ::ng-deep form .p-button {
+  	padding: 0.75rem 12rem;
+  }

@@ -1,0 +1,52 @@
+<div class="flex justify-content-center">
+  <div class="card">
+    <p-toast></p-toast>
+
+  </div>
+
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-4 mt-8">
+    <div class="text-center mb-5">
+      <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+      <span class="text-600 font-medium line-height-3">Don't have an account?</span>
+      <a routerLink="/signup" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
+    </div>
+
+
+      <form [formGroup]="signInForm" (ngSubmit)="authenticate()">
+        <div>
+        <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+        <input formControlName="username" id="email1" type="text" placeholder="Email address" pInputText class="w-full mb-3">
+          <div *ngIf="username?.dirty&&username?.invalid" class="py-2 text-red-400">
+            <div *ngIf="username?.errors?.['required']">
+              username is required
+            </div>
+            <div *ngIf="username?.errors?.['email']">
+              enter valid username
+            </div>
+          </div>
+
+        <label  for="password1" class="block text-900 font-medium mb-2">Password</label>
+        <input  formControlName="password" id="password1" type="password" placeholder="Password" pInputText class="w-full mb-3">
+          <div *ngIf="password?.dirty&&password?.invalid" class="py-2 text-red-400">
+            <div *ngIf="password?.errors?.['required']">
+              password is required
+            </div>
+            <div *ngIf="password?.errors?.['pattern']">
+              enter valid password
+            </div>
+          </div>
+        <div class="flex align-items-center justify-content-between mb-6">
+          <div class="flex align-items-center">
+
+          </div>
+          <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot password?</a>
+        </div>
+
+        <button [disabled]="signInForm.invalid" pButton pRipple label="Sign In" icon="pi pi-user" class="w-full"></button>
+      </div>
+    </form>
+
+  </div>
+
+
+</div>

@@ -1,5 +1,5 @@
-export interface LoginRequestDto{
+export interface LoginResponseDto{
 
   username:string;
-  password:string;
+  token:string;
 }

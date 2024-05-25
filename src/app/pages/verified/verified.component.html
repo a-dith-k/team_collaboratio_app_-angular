@@ -1,0 +1,13 @@
+<div *ngIf="isVerified;else unverified" class="flex-column flex justify-content-center h-30rem " >
+	<h3 class="text-center text-2xl poppins-medium">You have successfully verified your email</h3>
+  <p class="text-center">you will be automatically redirected to login page in {{countDown}} seconds or
+    click <a routerLink="/signin">here</a> to login</p>
+</div>
+<ng-template #unverified >
+  <div class=" flex h-30rem align-items-center justify-content-center">
+    <h2 *ngIf="errorMessage.includes('invalid') || errorMessage.includes('expired')">{{errorMessage}} <a routerLink="/resend">click here to resend</a></h2>
+    <h2 *ngIf="errorMessage.includes('verified')">{{errorMessage}} <a routerLink="/signin">click here to login</a></h2>
+
+  </div>
+
+</ng-template>

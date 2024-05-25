@@ -1,0 +1,36 @@
+<div class="z-0">
+  <div class="card">
+    <p-toast></p-toast>
+  </div>
+  <h2 class="poppins-medium">Settings</h2>
+  <p-tabMenu [scrollable]="true" [model]="items" [activeItem]="activeItem"></p-tabMenu>
+  <div *ngIf="!userData" class="justify-content-center h-30rem align-items-center flex ">
+    <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
+  </div>
+  <form *ngIf="userData">
+  <div class="grid">
+      <div class="flex flex-column gap-2 m-1 col-6">
+        <label for="username">Your Full Name</label>
+        <input class="border-dotted border-2" #fullNameField (change)="changeName(fullNameField.value)" [value]="userData.firstName+userData.lastName" id="username" type="text" pInputText />
+      </div>
+      <div class="col-12 grid">
+        <div class="flex flex-column  gap-2 m-1 col-6">
+          <label for="jobTitle">Job Title</label>
+          <input class="border-dotted border-2"  #jobTitleField (change)="changeJobTitle(jobTitleField.value)" [value]="userData.jobTitle" id="jobTitle" type="text" pInputText/>
+        </div>
+        <div class="flex flex-column  gap-2 m-1 col-6">
+          <label for="department">Department or Team</label>
+          <input class="border-dotted border-2" #departmentField (change)="changeDepartment(departmentField.value)" [value]="userData.department"   id="department" type="text" pInputText />
+        </div>
+      </div>
+      <div class="flex flex-column  gap-2 m-1 col-6">
+        <label for="email">email</label>
+        <input class="border-dotted border-2" [value]="userData.email"  [disabled]="true"  id="email" type="text" pInputText />
+      </div>
+      <div class="flex flex-column  gap-2 m-1 col-9">
+        <label for="aboutMe">about me</label>
+        <textarea class="border-dotted border-2" #aboutMeField (change)="changeAboutMe(aboutMeField.value)" [value]="userData.aboutMe" id="aboutMe" rows="5" cols="30" pInputTextarea [autoResize]="true"></textarea>
+      </div>
+  </div>
+  </form>
+</div>

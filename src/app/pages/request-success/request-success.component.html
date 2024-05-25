@@ -1,0 +1,12 @@
+<div class="text-center">
+	<H1 class="text-7xl" [ngStyle]="{'font-weight':'200'}">Please verify your email address</H1>
+	<p class="text-2xl font-medium text-color-secondary">Get started with One! verify <br>
+	{{email}}</p>
+
+	<p class="text-xl">complete your signup through the email we sent to your email
+		 address. Didn't receive an email?
+	</p>
+	
+	<p-button [disabled]="isTimerRunning" (click)="resendEmail()">Resend email</p-button>
+	<p class="text-center" *ngIf="isTimerRunning">resend after {{timer}} seconds<p>
+</div>

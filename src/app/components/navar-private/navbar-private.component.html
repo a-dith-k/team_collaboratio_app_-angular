@@ -1,0 +1,54 @@
+<nav class=" z-5 flex align-items-center nav-color border-bottom-1 border-gray-600 fixed w-full overflow-hidden top-0">
+  <div class="mx-2  py-2 block">
+    <p-button  [rounded]="true" size="small">
+       Create
+    </p-button>
+  </div>
+  <div class="w-full flex justify-content-center">
+        <span class="p-input-icon-right">
+       <i class="pi pi-spin" [ngClass]="{'pi-spinner':isSearching}"></i>
+        <input  placeholder="search" (keyup)="search()" class="border-round-3xl w-29rem h-2rem bg-black-alpha-20" type="text" pInputText [(ngModel)]="searchInput" />
+    </span>
+  </div>
+  <div class="ml-auto mx-2">
+    <div class="card flex justify-content-center">
+      <p-overlayPanel  #op>
+        <div class="grid h-20rem">
+          <div class="col-6 px-2 flex flex-column ">
+            <div>
+              <h3 class="m-0 p-0">Account</h3>
+            </div>
+            <div class=" w-full border-bottom-1">
+              <ul class=" pl-0">
+                <li class="list-none px-1" *ngFor="let team of teams">
+                  <button class="p-button w-full mb-1 p-button-raised  p-button-secondary p-button-rounded" [ngStyle]="{}"  >{{team.name}}</button>
+                </li>
+              </ul>
+            </div>
+            <div class=" mt-auto">
+              <button class="p-button w-full   p-button-raised  p-button-danger p-button-rounded"  (click)="authService.logOut()">logout</button>
+            </div>
+
+          </div>
+          <div class="col-6 px-2 flex-column flex border-left-1">
+            <div class="">
+              <h2 class="m-0 p-0 text-center">Team Name</h2>
+              <h5 class="text-center">adithkpattiam@gmail.com</h5>
+            </div>
+            <div >
+              <button class="p-button-warning p-button p-button-rounded w-full mb-1">Admin Console</button>
+              <button class="p-button-warning p-button p-button-rounded w-full mb-1">New workspace</button>
+            </div>
+            <div class="mt-auto">
+              <button [routerLink]="profileLink" class=" p-button p-button-rounded w-full ">Profile</button>
+            </div>
+          </div>
+        </div>
+
+      </p-overlayPanel>
+      <p-button [rounded]="true" class="p-button-rounded " (click)="op.toggle($event)"  >{{$userIconName |async |slice:0:2}}</p-button>
+    </div>
+  </div>
+
+</nav>
+

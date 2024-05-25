@@ -1,0 +1,59 @@
+<div *ngIf="loading" class="justify-content-center h-30rem align-items-center flex ">
+	<p-progressSpinner ariaLabel="loading"></p-progressSpinner>
+</div>
+<div *ngIf="!loading" class="flex justify-content-center mt-2 ">
+	<div class="card">
+		<p-toast></p-toast>
+
+	</div>
+	<div>
+		<div>
+			<h1 class="font-normal text-4xl text-center">Welcome to One</h1>
+			<h3 class="font-medium text-color-secondary	text-center">To get started, please sign up</h3>
+		</div>
+		<div class="flex justify-content-center mb-3">
+			<p-button [outlined]="true" >
+				<img alt="logo" src="assets/google.png" style="width: 1.5rem" />
+				<span class="ml-5 text-color">Continue with google</span>
+			</p-button>
+		</div>
+		<div class="separator">
+			or
+		</div>
+		<form [formGroup]="signUpForm"  (ngSubmit)="formSubmit()">
+
+			<div class="flex flex-column gap-2 mt-3">
+				<label htmlFor="email" class="text-sm font-medium">Email address</label>
+				<input
+				pInputText
+				type="email"
+				id="email"
+				formControlName="emailId"
+				name="email" />
+			</div>
+
+			<div *ngIf="emailId?.dirty&&emailId?.invalid" class="py-2 text-red-400">
+				enter valid email
+			</div>
+
+			<div class="flex flex-column gap-2 mt-3">
+				<label htmlFor="password" class="text-sm font-medium">Password</label>
+				<input pInputText type="password" id="password" formControlName="password" name="password" />
+			</div>
+
+			<div *ngIf="password?.dirty&&password?.invalid" class="py-2 text-red-400">
+				<div *ngIf="password?.errors?.['required']">
+					password is required
+				</div>
+				<div *ngIf="password?.errors?.['pattern']">
+					password requires atleast 8 characters including one<br> uppercase letter ,special character  and a number
+				</div>
+			</div>
+
+			<div class=" flex justify-content-center my-3">
+				<p-button [disabled]="!signUpForm.valid" type="submit" label="Continue"></p-button>
+			</div>
+
+		</form>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<div class="grid  m-0 h-screen pt-6 ">
+
+  <div class="md:col-2 z-0 nav-color flex-column mt-1">
+    <div  class="mb-1">
+      <p-button [routerLink]="homeLink" routerLinkActive=""   label="Home" [raised]="true" severity="secondary"></p-button>
+    </div>
+    <div class="mb-1" >
+      <p-button [routerLink]="taskLink" label="My Tasks" [raised]="true" severity="secondary"></p-button>
+    </div>
+    <div class="mb-1">
+      <p-button [routerLink]="inboxLink" label="Inbox" [raised]="true" severity="secondary"></p-button>
+    </div>
+  </div>
+  <div class="md:col-10 ">
+      <router-outlet name="dash"></router-outlet>
+  </div>
+</div>
